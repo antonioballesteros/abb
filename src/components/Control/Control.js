@@ -10,7 +10,16 @@ const parseValue = (value) => {
   return parseInt(value * 100) / 100
 }
 
-const Control = ({ name, value, dev, nominal, normalDev, devTol, quality }) => {
+const Control = ({
+  name,
+  value,
+  dev,
+  nominal,
+  normalDev,
+  maxDev,
+  devTol,
+  quality,
+}) => {
   /*
   Title attribute used only during tests !!
   to allow see nominal and value loaded
@@ -29,7 +38,9 @@ const Control = ({ name, value, dev, nominal, normalDev, devTol, quality }) => {
         className="dev-tol"
         title={`[Nom:${nominal} / Val:${parseValue(
           value
-        )} / NormalDev:${parseValue(normalDev)} ]`}
+        )} / NormalDev:${parseValue(normalDev)} / MaxDev:${parseValue(
+          maxDev
+        )}  ]`}
       >
         {parseValue(devTol)}
       </div>
@@ -46,6 +57,7 @@ Control.propTypes = {
   dev: PropTypes.number,
   nominal: PropTypes.number,
   normalDev: PropTypes.number,
+  maxDev: PropTypes.number,
   devTol: PropTypes.number,
   quality: PropTypes.oneOf([BAD, WARNING, GOOD, PERFECT]),
 }
