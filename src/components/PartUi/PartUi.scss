@@ -1,27 +1,37 @@
 .part {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+
+  header {
+    height: 60px;
+    display: flex;
+    background: darkseagreen;
+    h1 {
+      margin: auto 20px;
+    }
+  }
+
+  .columns {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    height: calc(100% - 60px);
+    .column {
+      border: 1px solid darkseagreen;
+      width: 100%;
+    }
+  }
 }
 
 @media (min-width: 600px) {
   .part {
-    width: 100%;
-    height: 100%;
-
-    header {
-      height: 60px;
-      display: flex;
-      background: darkseagreen;
-      h1 {
-        margin: auto 20px;
-      }
-    }
+    overflow: hidden;
 
     .columns {
-      display: flex;
-      height: 95%;
-      height: calc(100% - 60px);
+      flex-direction: row;
+
       .column {
-        border: 1px solid darkseagreen;
         height: 100%;
 
         &.width-1 {
