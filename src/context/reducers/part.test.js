@@ -7,6 +7,14 @@ import {
 
 import part, { initialState } from './part'
 
+//Testing default state when unk action is called
+test('UNK_ACTION', () => {
+  const updateAction = { payload: {}, type: 'UNK_ACTION' }
+  const updatedState = part(initialState, updateAction)
+
+  expect(updatedState).toEqual(initialState)
+})
+
 test('CONNECTION_UPDATING', () => {
   const updateAction = { payload: {}, type: CONNECTION_UPDATING }
   const updatedState = part(initialState, updateAction)
