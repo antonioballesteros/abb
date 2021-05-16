@@ -51,7 +51,8 @@ const BackendMocked = () => {
       <button onClick={() => createFakeEvent(1)}>Generate A</button>
       <button onClick={() => createFakeEvent(2)}>Generate B</button>
       <button onClick={() => createFakeEvent(3)}>Generate C</button>
-      <button onClick={() => createFakeEvent(4)}>Generate ERROR</button>
+      <button onClick={() => createFakeEvent(4)}>Generate D</button>
+      <button onClick={() => createFakeEvent(99)}>Generate ERROR</button>
     </div>
   )
 }
