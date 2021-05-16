@@ -73,13 +73,6 @@ export const buildPartData = ({ setup, data }) => {
               : value - control.nominal + control.normalDev
             : 0
 
-        console.log('devTol', {
-          devTol,
-          quality,
-          value,
-          nom: control.nominal,
-          dev: control.normalDev,
-        })
         return {
           ...control,
           value,

@@ -1,12 +1,16 @@
+import PropTypes from 'prop-types'
+
 import './Control.scss'
 import { Quality } from '../'
 
-const Control = ({ control }) => {
-  const parseValue = (value) => {
-    if (!value) return null
-    return parseInt(value * 100) / 100
-  }
+import { BAD, WARNING, GOOD, PERFECT } from '../../setup'
 
+const parseValue = (value) => {
+  if (!value) return null
+  return parseInt(value * 100) / 100
+}
+
+const Control = ({ name, value, dev, nominal, normalDev, devTol, quality }) => {
   /*
   Title attribute used only during tests !!
   to allow see nominal and value loaded
@@ -14,26 +18,36 @@ const Control = ({ control }) => {
 
   return (
     <div className="control">
-      <div className="name">{control.name}</div>
+      <div className="name">{name}</div>
       <div
         className="dev"
-        title={`[Nom:${control.nominal} / Val:${parseValue(control.value)} ]`}
+        title={`[Nom:${nominal} / Val:${parseValue(value)} ]`}
       >
-        {parseValue(control.dev)}
+        {parseValue(dev)}
       </div>
       <div
         className="dev-tol"
-        title={`[Nom:${control.nominal} / Val:${parseValue(
-          control.value
-        )} / NormalDev:${parseValue(control.normalDev)} ]`}
+        title={`[Nom:${nominal} / Val:${parseValue(
+          value
+        )} / NormalDev:${parseValue(normalDev)} ]`}
       >
-        {parseValue(control.devTol)}
+        {parseValue(devTol)}
       </div>
       <div className="quality">
-        <Quality quality={control.quality} />
+        <Quality quality={quality} />
       </div>
     </div>
   )
+}
+
+Control.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.number,
+  dev: PropTypes.number,
+  nominal: PropTypes.number,
+  normalDev: PropTypes.number,
+  devTol: PropTypes.number,
+  quality: PropTypes.oneOf([BAD, WARNING, GOOD, PERFECT]),
 }
 
 export default Control

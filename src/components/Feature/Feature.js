@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import './Feature.scss'
 import { Control, Quality } from '../'
 
@@ -33,7 +35,7 @@ const Feature = ({ feature, size }) => {
               </div>
               <div className="body">
                 {column.map((control) => (
-                  <Control key={control.id} control={control} />
+                  <Control key={control.id} {...control} />
                 ))}
               </div>
             </div>
@@ -42,6 +44,15 @@ const Feature = ({ feature, size }) => {
       </div>
     </article>
   )
+}
+
+Feature.propTypes = {
+  feature: PropTypes.object.isRequired,
+  size: PropTypes.number,
+}
+
+Feature.defaultProps = {
+  size: 1,
 }
 
 export default Feature

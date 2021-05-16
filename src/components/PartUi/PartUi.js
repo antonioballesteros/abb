@@ -1,5 +1,7 @@
-import { ErrorCard, Loading, Feature } from '../'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { ErrorCard, Loading, Feature } from '../'
+import { BAD, WARNING, GOOD, PERFECT } from '../../setup'
 
 import './PartUi.scss'
 
@@ -10,6 +12,8 @@ const getFeature = (id, features) => {
 const PartUi = ({ part, error }) => {
   if (error) return <ErrorCard msg={error} />
   if (!part || !part.id) return <Loading />
+
+  console.log('part', part)
 
   return (
     <div className="part">
@@ -44,6 +48,36 @@ const PartUi = ({ part, error }) => {
       </div>
     </div>
   )
+}
+
+const controlShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  quality: PropTypes.oneOf([BAD, WARNING, GOOD, PERFECT]),
+  dev: PropTypes.number,
+  devTol: PropTypes.number,
+  maxDev: PropTypes.number,
+  nominal: PropTypes.number,
+  normalDev: PropTypes.number,
+  value: PropTypes.number,
+}
+
+const featureShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  quality: PropTypes.oneOf([BAD, WARNING, GOOD, PERFECT]),
+  controls: PropTypes.arrayOf(PropTypes.shape(controlShape)),
+}
+const partShape = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string,
+  features: PropTypes.arrayOf(PropTypes.shape(featureShape)),
+  layout: PropTypes.array.isRequired,
+}
+
+PartUi.propTypes = {
+  part: PropTypes.shape(partShape),
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 }
 
 export default PartUi
