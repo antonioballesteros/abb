@@ -40,6 +40,7 @@ const BackendMocked = () => {
   const createFakeEvent = (id) => {
     // create fake values "from backend"
     const fakePart = createFakedValue(id, setup)
+    console.log('Faking data', fakePart)
 
     // send to frontend new set of values
     const event = new CustomEvent('update-part', { detail: fakePart })

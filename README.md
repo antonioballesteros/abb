@@ -9,6 +9,46 @@ Each button is a `faked` part with different layouts ( you will understand this 
 
 The idea to test should be click the same button to simulate items created and calls sent from backend
 
+I've simplified the information `received` from backend, simulating it's a dummy machine\
+Backend machine doesn't know nothing about nominal or deviations, only knows the value for this `part`, the `id`, and the distribution from `features` .. that's all
+
+```javascript
+{
+  1: {
+    feat-a: {
+      a: 9.609350793245543
+      b: 31.7783529472889
+      c: 46.88701859949038
+      d: 42.95899931190046
+      e: 43.96904668695405
+      f: 48.65743521468296
+      g: 56.06588850740972
+      h: 55.862015626711056
+      i: 48.84511505694972
+      j: 50.21384092512972
+      k: 48.54615330394554
+      l: 44.802348519596016
+      m: 49.54362908741678
+      n: 55.22454689520915
+      o: 51.92555581588798
+      p: 47.870435179915994
+      q: 44.52320705624367
+      r: 43.519328705858875
+      s: 42.67304697979544
+    },
+    feat-b: {
+      a: 15.095659832304744
+      b: 32.81253561379016
+      c: 19.95078467023319
+      d: 27.907948070748397
+    }
+    ...
+  }
+}
+```
+
+You can see the information loaded on console if you need it
+
 ### App
 
 You can test it directly from Github
@@ -98,6 +138,12 @@ column: ['feat-f'],
 ```
 
 ## Limits
+
+### Layouts are fixed and can't be updated
+
+Yes, this should be nice to allow it. \
+Create another service to allow a CRUD environment.\
+The information is stored inside the context state, it could be easy to implement
 
 ### Only 5 columns are allowed, \
 
