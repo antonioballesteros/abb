@@ -3,7 +3,8 @@
   "displayName": "AbbAntonioApp",
   "description": "Prueba Técnica Frontend - AbbAntonioApp",
   "author": "Antonio",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "homepage": "https://antonioballesteros.github.io/abb",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

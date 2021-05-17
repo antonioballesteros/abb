@@ -13,8 +13,6 @@ const PartUi = ({ part, error }) => {
   if (error) return <ErrorCard msg={error} />
   if (!part || !part.id) return <Loading />
 
-  console.log('part', part)
-
   return (
     <div className="part">
       <header>
