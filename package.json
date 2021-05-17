@@ -3,7 +3,7 @@
   "displayName": "AbbAntonioApp",
   "description": "Prueba Técnica Frontend - AbbAntonioApp",
   "author": "Antonio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://antonioballesteros.github.io/abb",
   "private": true,
   "dependencies": {
